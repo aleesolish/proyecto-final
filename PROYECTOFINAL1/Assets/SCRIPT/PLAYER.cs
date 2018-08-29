@@ -8,11 +8,8 @@ public class PLAYER : MonoBehaviour {
     public float speed; //Para meterle la velocidad
     private bool moving;//Para saber si se esta moviendo 
     private Rigidbody2D Rb;//Para que le afecte la gravedad 
-    private bool grounded;//Para saber si al brincar toca el suelo 
     public float high;//Cuanto va a saltar 
-    public Transform groundCheck;
-    public float groundCheckRadius;
-    public LayerMask ground;
+
 
 	// Use this for initialization
 	void Start () {
@@ -38,16 +35,13 @@ public class PLAYER : MonoBehaviour {
         }
     }
 
-	private void FixedUpdate()
-	{
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ground);
-	}
+	private void Jump(){ //Hace que brinque
 
-	private void Jump(){
-        if (Input.GetKeyDown(KeyCode.Space)&& grounded) {
-            Rb.velocity = new Vector2(0, high);
+        if (Input.GetButtonDown("Jump"))
+            Rb.velocity = new Vector3(0, 5, 0);
+            
             
         }
     }
-}
+
 
