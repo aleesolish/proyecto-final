@@ -27,7 +27,7 @@ public class PLAYER : MonoBehaviour {
 
     private void Walk(){
         float _x = Input.GetAxis("Horizontal");
-        //Flip(x);// para que se gire el sprite 
+        Flip(_x)
         moving = (Mathf.Abs(_x)) > 0;
         if (moving){
             transform.position += new Vector3(_x, 0, 0) * speed * Time.deltaTime;
